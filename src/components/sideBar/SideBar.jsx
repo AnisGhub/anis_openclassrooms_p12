@@ -1,8 +1,8 @@
+import React from 'react';
 import './sideBar.css';
-function SideBar(){
-    return (
-        <div>SideBar</div>
-    )
-}
 
-export default SideBar;
+export default function SideBar() {
+  return (
+    <aside className="sideBar">SideBar</aside>
+  );
+}
