@@ -1,0 +1,31 @@
+/* header */
+.header{
+    background-color: #020203;
+}
+
+.header .logo{
+    margin-right: 149px;
+}
+.header .logo__img{
+    width: 178px;
+    height: 61px;
+}
+/* navigation */
+.navigation .menu{
+    list-style: none;
+    display: flex;
+}
+.navigation .menu__link:not(:first-child){
+    margin-left: 204px;
+}
+.navigation .menu__link a{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 150%;
+    color: #ffffff;
+}
+
+.navigation .menu__link--active{
+    text-decoration: underline;
+}
+
