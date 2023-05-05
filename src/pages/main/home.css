@@ -1,0 +1,16 @@
+.main{
+    margin-top: 75px;
+}
+
+.main__userActivity{
+    background-color: #FBFBFB;
+    width: 835px;
+    height: 320px;
+}
+
+/* laptop 1024px*/
+@media screen and (max-width: 1024px){
+    .main__userActivity{
+        width: 535px;
+    }
+}
