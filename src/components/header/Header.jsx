@@ -11,16 +11,16 @@ function Header() {
       <nav className="navigation">
         <ul className="menu">
           <li className="menu__link">
-            <a href="">Accueil</a>
+            <button type="button">Accueil</button>
           </li>
           <li className="menu__link">
-            <a href="">Profil</a>
+            <button type="button">Profil</button>
           </li>
           <li className="menu__link">
-            <a href="">Réglage</a>
+            <button type="button">Réglage</button>
           </li>
           <li className="menu__link">
-            <a href="">Communauté</a>
+            <button type="button">Communauté</button>
           </li>
         </ul>
       </nav>
