@@ -8,6 +8,12 @@
     height: 320px;
 }
 
+.main__userAverageSessions{
+    background-color: #FF0000;
+    height: 263px;
+    width: 258px;
+}
+
 /* laptop 1024px*/
 @media screen and (max-width: 1024px){
     .main__userActivity{

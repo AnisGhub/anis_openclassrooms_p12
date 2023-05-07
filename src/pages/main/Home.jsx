@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import './home.css';
 import ActivityChart from '../../components/activityChart/ActivityChart';
-// import ActivityChart from "./components/ActivityChart";
-// import TimeSessionsChart from "./components/TimeSessionsChart";
-// import RadarChart from "./components/RadarChart";
+import AverageSessionsChart from '../../components/averageSessionsChart/AverageSessionsChart';
+
+// import RadarChart from "./components/performancesChart";
 // import ScoreChart from "./components/ScoreChart";
 // import InfoCard from "./components/InfoCard";
 
@@ -35,6 +35,9 @@ export default function Home() {
       </div>
       <div className="main__userActivity">
         <ActivityChart userId={userId} />
+      </div>
+      <div className="main__userAverageSessions">
+        <AverageSessionsChart userId={userId} />
       </div>
     </main>
   );
