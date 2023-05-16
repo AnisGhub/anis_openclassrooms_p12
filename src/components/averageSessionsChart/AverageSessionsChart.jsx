@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './averageSessionsChart.css';
 import {
-  ComposedChart,
   Line,
   XAxis,
   Tooltip,
   ResponsiveContainer,
+  LineChart,
+  Rectangle,
 } from 'recharts';
 
 function CustomTooltip({ active, payload }) {
@@ -19,6 +20,19 @@ function CustomTooltip({ active, payload }) {
     );
   }
   return null;
+}
+
+function CustomCursor({ points, width, height }) {
+  const { x } = points[0];
+  return (
+    <Rectangle
+      x={x}
+      y={0}
+      width={width}
+      height={height}
+      opacity={0.1}
+    />
+  );
 }
 
 function AverageSessionsChart({ userId }) {
@@ -63,8 +77,8 @@ function AverageSessionsChart({ userId }) {
   }
 
   return (
-    <ResponsiveContainer>
-      <ComposedChart
+    <ResponsiveContainer className="timeSession">
+      <LineChart
         data={sessions}
         margin={{
           top: 20,
@@ -72,11 +86,35 @@ function AverageSessionsChart({ userId }) {
           bottom: 20,
           left: 20,
         }}
+        background={{ fill: 'red' }}
       >
-        <XAxis dataKey="day" tickFormatter={formatDay} stroke="white" tickLine={false} axisLine={false} />
-        <Tooltip content={<CustomTooltip />} />
-        <Line type="monotone" dataKey="sessionLength" stroke="white" />
-      </ComposedChart>
+        <defs>
+          <linearGradient id="colorGradient" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="1.19%" stopColor="#FFFFFF" stopOpacity={1} />
+            <stop offset="81.27%" stopColor="rgba(255, 255, 255, 0.403191)" stopOpacity={1} />
+          </linearGradient>
+        </defs>
+        <XAxis
+          dataKey="day"
+          tickFormatter={formatDay}
+          stroke="white"
+          tickLine={false}
+          tick={{ opacity: 0.6 }}
+          axisLine={false}
+        />
+        <Tooltip
+          content={<CustomTooltip />}
+          cursor={<CustomCursor width={500} height={500} />}
+        />
+        <Line
+          type="basis"
+          dataKey="sessionLength"
+          stroke="url(#colorGradient)"
+          strokeWidth={3}
+          activeDot={{ r: 4 }}
+          dot={false}
+        />
+      </LineChart>
     </ResponsiveContainer>
   );
 }
