@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './home.css';
 import ActivityChart from '../../components/activityChart/ActivityChart';
 import AverageSessionsChart from '../../components/averageSessionsChart/AverageSessionsChart';
+import PerformancesChart from '../../components/performancesChart/PerformancesChart';
 
 // import RadarChart from "./components/performancesChart";
 // import ScoreChart from "./components/ScoreChart";
@@ -38,6 +39,9 @@ export default function Home() {
       </div>
       <div className="main__userAverageSessions">
         <AverageSessionsChart userId={userId} />
+      </div>
+      <div className="main__userPerformances">
+        <PerformancesChart userId={userId} />
       </div>
     </main>
   );

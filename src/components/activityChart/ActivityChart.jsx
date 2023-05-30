@@ -5,6 +5,7 @@ import './activityChart.css';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
+import ActivityFactory from '../../factories/ActivityFactory';
 
 function CustomTooltip({ active, payload }) {
   if (active && payload && payload.length) {
@@ -29,7 +30,8 @@ function ActivityChart({ userId }) {
         try {
           const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
           const data = await response.json();
-          setActivities(data.data.sessions);
+          const activity = ActivityFactory.create(data.data, 'api');
+          setActivities(activity.sessions);
           setIsLoading(false);
         } catch (e) {
           setIsLoading(false);
