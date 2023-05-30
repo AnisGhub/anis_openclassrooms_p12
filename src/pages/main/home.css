@@ -14,6 +14,13 @@
     width: 258px;
 }
 
+.main__userPerformances{
+    background-color: #282D30;
+    height: 263px;
+    width: 258px;
+    margin-top: 20px;
+}
+
 /* laptop 1024px*/
 @media screen and (max-width: 1024px){
     .main__userActivity{

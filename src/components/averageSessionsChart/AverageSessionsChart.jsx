@@ -10,6 +10,7 @@ import {
   LineChart,
   Rectangle,
 } from 'recharts';
+import AverageSessionsFactory from '../../factories/AverageSessionsFactory';
 
 function CustomTooltip({ active, payload }) {
   if (active && payload && payload.length) {
@@ -46,7 +47,8 @@ function AverageSessionsChart({ userId }) {
         try {
           const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
           const data = await response.json();
-          setSessions(data.data.sessions);
+          const averageSessions = AverageSessionsFactory.create(data.data, 'api');
+          setSessions(averageSessions.sessions);
           setIsLoading(false);
         } catch (e) {
           setIsLoading(false);
@@ -77,7 +79,7 @@ function AverageSessionsChart({ userId }) {
   }
 
   return (
-    <ResponsiveContainer className="timeSession">
+    <ResponsiveContainer>
       <LineChart
         data={sessions}
         margin={{
@@ -88,6 +90,9 @@ function AverageSessionsChart({ userId }) {
         }}
         background={{ fill: 'red' }}
       >
+        <text x="10" y="20" fontSize="15" fontWeight="normal">
+          Durée moyenne des sessions
+        </text>
         <defs>
           <linearGradient id="colorGradient" x1="100%" y1="0%" x2="0%" y2="0%">
             <stop offset="1.19%" stopColor="#FFFFFF" stopOpacity={1} />
