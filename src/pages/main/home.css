@@ -1,11 +1,18 @@
 .main{
     margin-top: 75px;
 }
+.main__charts{
+    width: 835px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
 .main__userActivity{
     background-color: #FBFBFB;
     width: 835px;
     height: 320px;
+    margin-bottom: 28px;
 }
 
 .main__userAverageSessions{
@@ -18,12 +25,16 @@
     background-color: #282D30;
     height: 263px;
     width: 258px;
-    margin-top: 20px;
 }
+
+.main__userScore{
+    background-color: #FBFBFB;
+    height: 263px;
+    width: 258px;
+}
+
+
 
 /* laptop 1024px*/
 @media screen and (max-width: 1024px){
-    .main__userActivity{
-        width: 535px;
-    }
 }
