@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './averageSessionsChart.css';
 import {
@@ -11,6 +11,7 @@ import {
   Rectangle,
 } from 'recharts';
 import AverageSessionsFactory from '../../factories/AverageSessionsFactory';
+import useFetch from '../customHook/useFetch';
 
 function CustomTooltip({ active, payload }) {
   if (active && payload && payload.length) {
@@ -37,29 +38,7 @@ function CustomCursor({ points, width, height }) {
 }
 
 function AverageSessionsChart({ userId }) {
-  const [sessions, setSessions] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const fetchSessions = async () => {
-        try {
-          const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
-          const data = await response.json();
-          const averageSessions = AverageSessionsFactory.create(data.data, 'api');
-          setSessions(averageSessions.sessions);
-          setIsLoading(false);
-        } catch (e) {
-          setIsLoading(false);
-          setError(`Une erreur est survenue : ${e.message}`);
-        }
-      };
-      fetchSessions();
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [userId]);
+  const { data: averageSessions, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}/average-sessions`, AverageSessionsFactory, 'api');
 
   const formatDay = (day) => {
     const daysOfWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -81,7 +60,7 @@ function AverageSessionsChart({ userId }) {
   return (
     <ResponsiveContainer>
       <LineChart
-        data={sessions}
+        data={averageSessions.sessions}
         margin={{
           top: 20,
           right: 20,
