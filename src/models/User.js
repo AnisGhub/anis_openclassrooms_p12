@@ -64,6 +64,18 @@ class User {
   get lipidCount() {
     return this.#lipidCount;
   }
+
+  get userDetails() {
+    return `User ID: ${this.#userId}
+            First Name: ${this.#firstName}
+            Last Name: ${this.#lastName}
+            Age: ${this.#age}
+            Score: ${this.#score}
+            Calorie Count: ${this.#calorieCount}
+            Protein Count: ${this.#proteinCount}
+            Carbohydrate Count: ${this.#carbohydrateCount}
+            Lipid Count: ${this.#lipidCount}`;
+  }
 }
 
 export default User;
