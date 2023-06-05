@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './scoreChart.css';
 import {
@@ -8,25 +8,15 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-function ScoreChart({ userScore }) {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    // Simulate loading delay
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+function ScoreChart({ userScore, isLoading, error }) {
   if (isLoading) {
     return <div>chargement en cours...</div>;
   }
 
-  if (userScore === null) {
+  if (error) {
     return (
       <div>
-        Une erreur est survenue lors de la récupération du score de l&apos;utilisateur.
+        {error}
       </div>
     );
   }

@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './activityChart.css';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 import ActivityFactory from '../../factories/ActivityFactory';
+import useFetch from '../customHook/useFetch';
 
 function CustomTooltip({ active, payload }) {
   if (active && payload && payload.length) {
@@ -20,29 +21,7 @@ function CustomTooltip({ active, payload }) {
 }
 
 function ActivityChart({ userId }) {
-  const [activities, setActivities] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const fetchActivities = async () => {
-        try {
-          const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
-          const data = await response.json();
-          const activity = ActivityFactory.create(data.data, 'api');
-          setActivities(activity.sessions);
-          setIsLoading(false);
-        } catch (e) {
-          setIsLoading(false);
-          setError(`Une erreur est survenue : ${e.message}`);
-        }
-      };
-      fetchActivities();
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [userId]);
+  const { data: activities, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}/activity`, ActivityFactory, 'api');
 
   if (isLoading) {
     return <div>chargement en cours...</div>;
@@ -58,7 +37,7 @@ function ActivityChart({ userId }) {
 
   return (
     <ResponsiveContainer>
-      <BarChart data={activities} margin={{}}>
+      <BarChart data={activities.sessions} margin={{}}>
         <text x="10" y="20" fontSize="15" fontWeight="normal">
           Activité quotidienne
         </text>

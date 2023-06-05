@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './performancesChart.css';
 import {
@@ -9,34 +9,11 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from 'recharts';
-import PerformanceFactory from '../../factories/PerformanceFactory';
+import PerformancesFactory from '../../factories/PerformancesFactory';
+import useFetch from '../customHook/useFetch';
 
 function PerformancesChart({ userId }) {
-  const [performances, setPerformances] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const fetchPerformances = async () => {
-        try {
-          const response = await fetch(`http://localhost:3000/user/${userId}/performance`);
-          const data = await response.json();
-          const performanceInstances = data.data.data.map(
-            (performanceData) => PerformanceFactory.create(performanceData, 'api'),
-          );
-          setPerformances(performanceInstances);
-          setIsLoading(false);
-        } catch (e) {
-          setIsLoading(false);
-          setError(`Une erreur est survenue : ${e.message}`);
-        }
-      };
-      fetchPerformances();
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [userId]);
+  const { data: performances, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}/performance`, PerformancesFactory, 'api');
 
   if (isLoading) {
     return <div>chargement en cours...</div>;

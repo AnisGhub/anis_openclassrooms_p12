@@ -1,6 +1,9 @@
 .main{
     margin-top: 75px;
 }
+.main__data{
+    display: flex;
+}
 .main__charts{
     width: 835px;
     display: flex;
