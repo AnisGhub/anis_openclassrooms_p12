@@ -1,43 +1,84 @@
 .main{
     margin-top: 75px;
 }
+.main__userName{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    margin-bottom: 41px;
+}
+.main__userName span{
+    color: #FF0101;
+}
+.main__text{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 77px;
+}
 .main__data{
     display: flex;
+    align-items: flex-start;
 }
 .main__charts{
     width: 835px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-right: 31px;
 }
 
 .main__userActivity{
     background-color: #FBFBFB;
     width: 835px;
     height: 320px;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 5px;
 }
 
 .main__userAverageSessions{
     background-color: #FF0000;
     height: 263px;
     width: 258px;
+    border-radius: 5px;
 }
 
 .main__userPerformances{
     background-color: #282D30;
     height: 263px;
     width: 258px;
+    border-radius: 5px;
 }
 
 .main__userScore{
     background-color: #FBFBFB;
     height: 263px;
     width: 258px;
+    border-radius: 5px;
 }
-
 
 
 /* laptop 1024px*/
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1248px){
+    .main__data{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .main__charts{
+        margin-right: unset;
+        margin-bottom: 31px;
+    }
+    .main__userCard{
+        background-color: unset;
+        height: unset;
+        width: 100%;
+    }
+    .nutrition-counts{
+        width: 835px;
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
+

@@ -38,19 +38,20 @@ function ScoreChart({ userScore, isLoading, error }) {
         className="customRadial-chart"
         barSize={12}
         data={data}
+        startAngle={90}
         endAngle={450}
         innerRadius="100%"
         outerRadius="40%"
-        startAngle={90}
       >
         <RadialBar
           dataKey="value"
         />
         <text
-          x="10"
-          y="20"
+          x="20"
+          y="30"
           textAnchor="start"
           fontSize={15}
+          fontWeight="bold"
           fill="#20253A"
         >
           Score
@@ -64,7 +65,16 @@ function ScoreChart({ userScore, isLoading, error }) {
           fontSize={16}
           fill="#74798C"
         >
-          {`${Math.round(userScore * 100)}% de votre objectif`}
+          <tspan x="50%" dy="-2em" fontWeight="bold">
+            {`${Math.round(userScore * 100)}%`}
+          </tspan>
+          <tspan x="50%" dy="1.5em">
+            de votre
+          </tspan>
+          <tspan x="50%" dy="1.5em">
+            objectif
+          </tspan>
+
         </text>
       </RadialBarChart>
     </ResponsiveContainer>

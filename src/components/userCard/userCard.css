@@ -1,0 +1,36 @@
+.nutrition-counts > div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+    height: 124px;
+    padding: 32px;
+    background-color: #FBFBFB;
+    margin-bottom: 39px;
+    border-radius: 5px;
+}
+.count-value{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    color: #282D30;
+}
+.count-label{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #74798C;
+}
+
+/* laptop 1024px*/
+@media screen and (max-width: 1248px){
+    
+    .nutrition-counts > div{
+        background-color: unset;
+        padding: unset;
+        justify-content: unset;
+    }
+    .count{
+        margin-left: 20px;
+    }
+}

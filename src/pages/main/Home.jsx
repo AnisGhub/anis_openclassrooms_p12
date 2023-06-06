@@ -13,7 +13,7 @@ export default function Home() {
   const userId = 18;
 
   const { data: userDetails, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}`, UserFactory, 'api');
-  console.log(userDetails);
+
   return (
     <main className="main">
       <div>
