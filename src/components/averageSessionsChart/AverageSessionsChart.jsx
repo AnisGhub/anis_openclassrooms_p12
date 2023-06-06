@@ -62,15 +62,16 @@ function AverageSessionsChart({ userId }) {
       <LineChart
         data={averageSessions.sessions}
         margin={{
-          top: 20,
+          top: 40,
           right: 20,
           bottom: 20,
           left: 20,
         }}
         background={{ fill: 'red' }}
       >
-        <text x="10" y="20" fontSize="15" fontWeight="normal">
-          Durée moyenne des sessions
+        <text x="15" y="30" fontSize="15" fontWeight="bold" opacity={0.5} fill="#FFFFFF">
+          <tspan x="20" dy="0">Durée moyenne des</tspan>
+          <tspan x="20" dy="20">sessions</tspan>
         </text>
         <defs>
           <linearGradient id="colorGradient" x1="100%" y1="0%" x2="0%" y2="0%">

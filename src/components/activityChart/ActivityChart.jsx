@@ -37,11 +37,23 @@ function ActivityChart({ userId }) {
 
   return (
     <ResponsiveContainer>
-      <BarChart data={activities.sessions} margin={{}}>
-        <text x="10" y="20" fontSize="15" fontWeight="normal">
+      <BarChart
+        data={activities.sessions}
+        margin={{
+          top: 40, right: 0, bottom: 10, left: 0,
+        }}
+      >
+        <text
+          x="10"
+          y="20"
+          fontSize="15"
+          fontWeight="bold"
+          textAnchor="start"
+          fill="#333"
+        >
           Activité quotidienne
         </text>
-        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+        <CartesianGrid strokeDasharray="2 2" vertical={false} />
         <XAxis
           dataKey="day"
           tickLine={false}
@@ -57,10 +69,19 @@ function ActivityChart({ userId }) {
           type="number"
           domain={['dataMin - 1', 'dataMax + 1']}
           tickFormatter={(tick) => Math.floor(tick)}
+          allowDuplicatedCategory={false}
         />
         <YAxis yAxisId="calories" orientation="left" hide />
         <Tooltip content={CustomTooltip} />
-        <Legend verticalAlign="top" align="right" />
+        <Legend
+          verticalAlign="top"
+          align="right"
+          iconType="circle"
+          iconSize={10}
+          wrapperStyle={{
+            top: 5, left: 0, fontSize: '14px', fontWeight: '500',
+          }}
+        />
         <Bar
           yAxisId="weight"
           name="Poids (kg)"

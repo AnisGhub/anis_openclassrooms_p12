@@ -6,21 +6,21 @@
     padding: 10px 0;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
 .header .logo{
-    margin-right: 149px;
+    flex: 1;
 }
 .header .logo__img{
     width: 178px;
     height: 61px;
 }
 /* navigation */
+.navigation{
+    flex: 7;
+}
 .navigation .menu{
     list-style: none;
     display: flex;
-}
-.navigation .menu__link:not(:first-child){
-    margin-left: 204px;
+    justify-content: space-around;
 }
 .navigation .menu__link button{
     border: 0;
@@ -31,5 +31,4 @@
     font-size: 24px;
     color: #ffffff;
 }
-
 

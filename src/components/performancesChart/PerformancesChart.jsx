@@ -26,21 +26,21 @@ function PerformancesChart({ userId }) {
       </div>
     );
   }
-
   return (
     <ResponsiveContainer>
       <RadarChart
         data={performances}
+        startAngle={30}
+        endAngle={-330}
+        outerRadius="75%"
       >
         <PolarGrid radialLines={false} />
         <PolarAngleAxis
-          axisLine={false}
           dataKey="kind"
           stroke="white"
-          dy={4}
           tickLine={false}
           tick={{
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: 500,
           }}
         />
