@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './scoreChart.css';
 import {
-  RadialBar,
-  RadialBarChart,
+  Pie,
+  PieChart,
   ResponsiveContainer,
 } from 'recharts';
 
@@ -31,20 +31,31 @@ function ScoreChart({ userScore, isLoading, error }) {
       value: 100,
     },
   ];
+  const data02 = [
+    {
+      fill: '#FFFFFF',
+      value: 100,
+    },
+  ];
 
   return (
     <ResponsiveContainer>
-      <RadialBarChart
-        className="customRadial-chart"
-        barSize={12}
-        data={data}
-        startAngle={90}
-        endAngle={450}
-        innerRadius="100%"
-        outerRadius="40%"
-      >
-        <RadialBar
+      <PieChart>
+        <Pie
+          data={data}
           dataKey="value"
+          innerRadius={80}
+          outerRadius={90}
+          startAngle={90}
+          endAngle={450}
+          stroke="none"
+        />
+        <Pie
+          data={data02}
+          dataKey="value"
+          innerRadius={0}
+          outerRadius={80}
+          isAnimationActive={false}
         />
         <text
           x="20"
@@ -65,7 +76,7 @@ function ScoreChart({ userScore, isLoading, error }) {
           fontSize={16}
           fill="#74798C"
         >
-          <tspan x="50%" dy="-2em" fontWeight="bold">
+          <tspan x="50%" dy="-2em" fontWeight="bold" fill="#20253A">
             {`${Math.round(userScore * 100)}%`}
           </tspan>
           <tspan x="50%" dy="1.5em">
@@ -76,7 +87,8 @@ function ScoreChart({ userScore, isLoading, error }) {
           </tspan>
 
         </text>
-      </RadialBarChart>
+      </PieChart>
+
     </ResponsiveContainer>
   );
 }
