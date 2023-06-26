@@ -12,6 +12,14 @@ import {
 import PerformancesFactory from '../../factories/PerformancesFactory';
 import useFetch from '../customHook/useFetch';
 
+/**
+  PerformancesChart component.
+  Displays a radar chart showing performance values for a user.
+  @component
+  @param {Object} props - The component props.
+  @param {number} props.userId - The ID of the user.
+  @returns {JSX.Element} PerformancesChart component JSX.
+*/
 function PerformancesChart({ userId }) {
   const { data: performances, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}/performance`, PerformancesFactory, 'api');
 

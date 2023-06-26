@@ -13,6 +13,15 @@ import {
 import AverageSessionsFactory from '../../factories/AverageSessionsFactory';
 import useFetch from '../customHook/useFetch';
 
+/**
+ * Custom tooltip component for the average sessions chart tooltip content.
+ * Displays the session duration in minutes.
+ *
+ * @param {Object} props - The component props.
+ * @param {boolean} props.active - Indicates if the tooltip is active.
+ * @param {Array} props.payload - Tooltip data.
+ * @returns {JSX.Element|null} The tooltip content or null if inactive.
+ */
 function CustomTooltip({ active, payload }) {
   if (active && payload && payload.length) {
     return (
@@ -24,6 +33,16 @@ function CustomTooltip({ active, payload }) {
   return null;
 }
 
+/**
+ * Custom cursor component for the average sessions chart tooltip cursor.
+ * Displays a semi-transparent rectangle over the chart line.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.points - Array of data points.
+ * @param {number} props.width - Width of the cursor.
+ * @param {number} props.height - Height of the cursor.
+ * @returns {JSX.Element} The cursor element.
+ */
 function CustomCursor({ points, width, height }) {
   const { x } = points[0];
   return (
@@ -37,9 +56,24 @@ function CustomCursor({ points, width, height }) {
   );
 }
 
+/**
+ * Average sessions chart component.
+ * Displays a line chart of average session durations.
+ *
+ * @param {Object} props - The component props.
+ * @param {number} props.userId - The user ID.
+ * @returns {JSX.Element} The average sessions chart.
+ */
 function AverageSessionsChart({ userId }) {
   const { data: averageSessions, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}/average-sessions`, AverageSessionsFactory, 'api');
 
+  /**
+   * Format the day of the week.
+   *
+   * @param {number} day - The day of the week.
+   * @returns {string} The formatted day.
+   * @description This function is invoked for each value on the X-axis to format the day labels.
+   */
   const formatDay = (day) => {
     const daysOfWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
     return daysOfWeek[day - 1];

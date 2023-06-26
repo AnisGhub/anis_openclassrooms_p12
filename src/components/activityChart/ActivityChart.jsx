@@ -8,6 +8,13 @@ import {
 import ActivityFactory from '../../factories/ActivityFactory';
 import useFetch from '../customHook/useFetch';
 
+/**
+* CustomTooltip component for rendering custom tooltip content.
+* @param {Object} props - Component props.
+* @param {boolean} props.active - Indicates if the tooltip is active.
+* @param {Array} props.payload - Tooltip data
+* @returns {JSX.Element|null} - Rendered tooltip content or null if inactive.
+*/
 function CustomTooltip({ active, payload }) {
   if (active && payload && payload.length) {
     return (
@@ -20,6 +27,12 @@ function CustomTooltip({ active, payload }) {
   return null;
 }
 
+/**
+ * ActivityChart component for displaying user activity.
+ * @param {Object} props - Component props.
+ * @param {number} props.userId - User ID.
+ * @returns {JSX.Element} - ActivityChart JSX element.
+ */
 function ActivityChart({ userId }) {
   const { data: activities, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}/activity`, ActivityFactory, 'api');
 
@@ -72,7 +85,7 @@ function ActivityChart({ userId }) {
           allowDuplicatedCategory={false}
         />
         <YAxis yAxisId="calories" orientation="left" hide />
-        <Tooltip content={CustomTooltip} />
+        <Tooltip content={<CustomTooltip />} />
         <Legend
           verticalAlign="top"
           align="right"

@@ -8,6 +8,16 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+/**
+  ScoreChart component.
+  Displays a pie chart showing the user's score as a percentage of their goal.
+  @component
+  @param {Object} props - The component props.
+  @param {number} props.userScore - The user's score as a percentage.
+  @param {boolean} props.isLoading - Indicates if the data is still loading.
+  @param {string} props.error - The error message, if any.
+  @returns {JSX.Element} ScoreChart component JSX.
+*/
 function ScoreChart({ userScore, isLoading, error }) {
   if (isLoading) {
     return <div>chargement en cours...</div>;
@@ -21,6 +31,12 @@ function ScoreChart({ userScore, isLoading, error }) {
     );
   }
 
+  /**
+  Data for the ScoreChart component.
+  @type {Array}
+  @property {string} fill - The fill color of the chart segment.
+  @property {number} value - The value of the chart segment.
+*/
   const data = [
     {
       fill: '#FF0000',
