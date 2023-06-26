@@ -1,4 +1,14 @@
+/**
+ * Class representing a Performance.
+ * @class
+ */
 class Performance {
+  /**
+   * Create a Performance.
+   * @constructor
+   * @param {number} value - The value of the performance.
+   * @param {number} kind - The kind of the performance.
+   */
   #kind;
 
   #value;
@@ -16,7 +26,15 @@ class Performance {
     return this.#kind;
   }
 
+  /**
+   * Set the kind of the performance.
+   * @param {number} value - The value representing the kind of the performance.
+   */
   set kind(value) {
+    /**
+     * A mapping of kind values to their corresponding labels.
+     * @type {Object<number, string>}
+     */
     const kindMapping = {
       1: 'Cardio',
       2: 'Energie',

@@ -9,9 +9,15 @@ import ScoreChart from '../../components/scoreChart/ScoreChart';
 import UserCard from '../../components/userCard/UserCard';
 import useFetch from '../../components/customHook/useFetch';
 
+/**
+ * Home component.
+ * Renders the main content (user Profile) of the home page.
+ * @returns {JSX.Element} The rendered component.
+ */
 export default function Home() {
   const userId = 18;
 
+  // Fetch user details using the useFetch custom hook
   const { data: userDetails, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}`, UserFactory, 'api');
 
   return (

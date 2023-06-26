@@ -11,6 +11,9 @@
 # production
 /build
 
+# Ignorer les fichiers de configuration de Visual Studio Code
+.vscode/settings.json
+
 # misc
 .DS_Store
 .env.local

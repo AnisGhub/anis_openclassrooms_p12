@@ -9,6 +9,12 @@ import AverageSessions from './pages/devInfos/AverageSessions';
 import Performances from './pages/devInfos/Performances';
 import User from './pages/devInfos/User';
 
+/**
+ * Root component of the application.
+ * Configures the routes for different pages of the application using react router.
+ *
+ * @returns {JSX.Element} The JSX element representing the application.
+ */
 export default function App() {
   return (
     <BrowserRouter>
