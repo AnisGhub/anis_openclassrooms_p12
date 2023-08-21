@@ -65,7 +65,8 @@ function CustomCursor({ points, width, height }) {
  * @returns {JSX.Element} The average sessions chart.
  */
 function AverageSessionsChart({ userId }) {
-  const { data: averageSessions, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}/average-sessions`, AverageSessionsFactory, 'api');
+  const url = process.env.REACT_APP_USE_MOCKED_DATA ? 'mockedDatas/average-sessions.json' : `http://localhost:3000/user/${userId}/average-sessions`;
+  const { data: averageSessions, error, isLoading } = useFetch(url, AverageSessionsFactory, 'api');
 
   /**
    * Format the day of the week.

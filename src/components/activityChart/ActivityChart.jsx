@@ -34,7 +34,8 @@ function CustomTooltip({ active, payload }) {
  * @returns {JSX.Element} - ActivityChart JSX element.
  */
 function ActivityChart({ userId }) {
-  const { data: activities, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}/activity`, ActivityFactory, 'api');
+  const url = process.env.REACT_APP_USE_MOCKED_DATA ? 'mockedDatas/activity.json' : `http://localhost:3000/user/${userId}/activity`;
+  const { data: activities, error, isLoading } = useFetch(url, ActivityFactory, 'api');
 
   if (isLoading) {
     return <div>chargement en cours...</div>;

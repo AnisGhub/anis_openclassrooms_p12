@@ -21,7 +21,8 @@ import useFetch from '../customHook/useFetch';
   @returns {JSX.Element} PerformancesChart component JSX.
 */
 function PerformancesChart({ userId }) {
-  const { data: performances, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}/performance`, PerformancesFactory, 'api');
+  const url = process.env.REACT_APP_USE_MOCKED_DATA ? 'mockedDatas/performance.json' : `http://localhost:3000/user/${userId}/performance`;
+  const { data: performances, error, isLoading } = useFetch(url, PerformancesFactory, 'api');
 
   if (isLoading) {
     return <div>chargement en cours...</div>;

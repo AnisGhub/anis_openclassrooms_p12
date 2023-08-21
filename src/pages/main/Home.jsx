@@ -18,7 +18,8 @@ export default function Home() {
   const userId = 18;
 
   // Fetch user details using the useFetch custom hook
-  const { data: userDetails, error, isLoading } = useFetch(`http://localhost:3000/user/${userId}`, UserFactory, 'api');
+  const url = process.env.REACT_APP_USE_MOCKED_DATA ? 'mockedDatas/userInfos.json' : `http://localhost:3000/user/${userId}`;
+  const { data: userDetails, error, isLoading } = useFetch(url, UserFactory, 'api');
 
   return (
     <main className="main">
